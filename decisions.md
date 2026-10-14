@@ -1,7 +1,5 @@
 # Decisions log
 
-# Decisions log
-
 One line per decision: what we chose and why. This becomes the Methodology section.
 
 | Date | Decision | Reason |
