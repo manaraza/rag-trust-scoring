@@ -22,3 +22,6 @@ One line per decision: what we chose and why. This becomes the Methodology secti
 | 2026-10-14 | MS MARCO uses its train-split questions and ground truth | This is the split PoisonedRAG used (evaluate_beir.py) |
 | 2026-10-14 | Hand-check ~30 attacker answers per dataset for "the wrong answer is actually valid" | The released attacker answers were LLM-generated and may occasionally be correct |
 | 2026-10-14 | Add a prefix-removed test set (poisoned passages without the leading question) | Every poisoned passage starts with the question, so a detector could learn that shortcut instead of anything about poisoning |
+| 2026-10-14 | Failure analysis (Step 1): ASR at n=1 is 0.54 when the model answers correctly without poison vs 0.80 when it does not (gap 0.26, 95% CI [0.08, 0.44]) | Parametric knowledge partly protects the model; motivates checking detector performance separately on known vs unknown questions |
+| 2026-10-14 | Keep control questions test164 and test213 | The model's own prior matches the attacker answer (popular misconceptions); these are model errors, not invalid attacker answers |
+| 2026-10-14 | Report substring metrics as approximate in both directions | False matches (e.g. "head" in "sperm head", "[23]" citations) and misses (e.g. "Thirty" vs "30"); F1 reported alongside |
