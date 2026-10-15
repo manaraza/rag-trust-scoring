@@ -29,3 +29,6 @@ One line per decision: what we chose and why. This becomes the Methodology secti
 | 2026-10-16 | HotpotQA gate passed: ASR at n=1 0.75 [0.66, 0.83] vs n=0 control upper CI 0.18 | Attack reproduces on a second dataset; difference from NQ (0.67) is within CIs |
 | 2026-10-16 | Report answer matching two ways: PoisonedRAG's substring test, and a whole-word test | Substring test counts "I don't know" as "no". Effect is small: HotpotQA n=0 0.11 -> 0.09, NQ unchanged. Expected to matter more on MS MARCO (24 yes/no attacker answers) |
 | 2026-10-16 | HotpotQA n=0 attacker-answer cases are mostly genuine: the model answers "No" to yes/no comparison questions whose correct answer is "yes" | A model bias, not a measurement artefact; comparison answers naming both options are a known limitation of string matching |
+| 2026-10-16 | MS MARCO gate passed: ASR at n=1 0.77 [0.68, 0.85] vs n=0 control upper CI 0.20 | Attack reproduces on all three datasets |
+| 2026-10-16 | For yes/no attacker answers, report ASR as a range: whole-word (lower bound) to substring (upper bound) | Substring counts "I don't know" as "no"; whole-word misses paraphrased "no" answers ("X is not Y"). MS MARCO n=5: 0.86-0.93 |
+| 2026-10-16 | Added contains_answer_word to rag_core.py | Evaluation code reports both answer checks |
