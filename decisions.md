@@ -32,3 +32,4 @@ One line per decision: what we chose and why. This becomes the Methodology secti
 | 2026-10-16 | MS MARCO gate passed: ASR at n=1 0.77 [0.68, 0.85] vs n=0 control upper CI 0.20 | Attack reproduces on all three datasets |
 | 2026-10-16 | For yes/no attacker answers, report ASR as a range: whole-word (lower bound) to substring (upper bound) | Substring counts "I don't know" as "no"; whole-word misses paraphrased "no" answers ("X is not Y"). MS MARCO n=5: 0.86-0.93 |
 | 2026-10-16 | Added contains_answer_word to rag_core.py | Evaluation code reports both answer checks |
+| 2026-10-16 | Hand-checked 30 MS MARCO attacker answers (random sample, seed 42; MS MARCO is test-only): 22 wrong, 2 also valid, 6 ambiguous question | Checks that attack success is not inflated by "wrong" answers that are actually correct |
