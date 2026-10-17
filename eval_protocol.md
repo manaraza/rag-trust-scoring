@@ -18,8 +18,8 @@ Fixed on 17 Oct 2026, before any detector result was seen. Both detectors (Disti
 
 ## 3. Columns and file
 
-- `data/passages.jsonl`, one JSON object per line. Large intermediate files stay on Drive.
-- Columns: `dataset, qid, split, context_id, n_poison, variant, source, poison_idx, rank, retrieval_score, question, passage, label`
+- `data/passages.jsonl`, one JSON object per line. Large intermediate files stay on Drive. *(Amended 17 Oct, before any detector run: GitHub stores the compressed `data/passages.jsonl.gz`, because the plain file is close to GitHub's 25 MB upload limit; the plain file stays on Drive.)*
+- Columns: `dataset, qid, split, context_id, n_poison, variant, source, poison_idx, rank, retrieval_score, question, passage, label`, *plus two helper columns (added 17 Oct): `group_variant` (the condition of the whole group: original, prefix_removed, clean_prefixed, rewritten_clean, shortcut_controlled, injection, train_aug; an unchanged passage inside a variant group keeps `variant = original`) and `passage_id` (one id per dataset, question and passage, shared by all forms of that passage).* Rows with no `context_id` are DistilBERT-only training passages that sit in no group.
   - `variant`: `original`, `prefix_removed`, `clean_prefixed`, `clean_truncated`, `rewritten_clean`, `injection`, `train_aug`
   - `source`: `clean` or `poison`; `poison_idx` 1–5 for poison, empty for clean. `poison_idx` = Step 1 index + 1 (`adv0` → 1 … `adv4` → 5); "poison #1" is `adv0`.
   - `rank`: position in the group (1–5); `retrieval_score`: Contriever score against the question, recomputed for changed text. A variant keeps its original's rank; groups are not re-sorted after the score is recomputed.
@@ -34,8 +34,8 @@ Fixed on 17 Oct 2026, before any detector result was seen. Both detectors (Disti
 
 - **DistilBERT:** unique passages, no duplicates. Per train question: 5 poison + clean top-5 + ranks 6–20.
 - **Feature scorer:** group rows of train questions, from n=0 groups and the five n=1 groups. n=5 groups are deliberately excluded (almost all poison, degenerate group features); feature-scorer results at n=5 are out of its training distribution and reported as such. Its negatives include clean passages inside n=1 groups. Ranks 6–20 are DistilBERT-only (they belong to no group).
-- **Augmentation (`train_aug`, train rows only, seed 42):** strip the question prefix from \~50% of poison; prepend the question to \~50% of clean; truncate \~50% of clean to a length sampled from the training poison lengths after the prefix step. Ranks 6–20 get the same clean augmentation (independent draws).
-  - An augmented passage **replaces** its original (each training passage appears once, in one form). Clean draws are independent, so \~25% of clean passages get both; then the body is truncated so that the **final passage, prefix included,** hits the sampled length.
+- **Augmentation (`train_aug`, train rows only, seed 42):** strip the question prefix from \~50% of poison; prepend the question to \~50% of clean; truncate \~50% of clean using **sentence-end matching** against the training poison lengths after the prefix step (see §6; amended 17 Oct). Ranks 6–20 get the same clean augmentation (independent draws).
+  - An augmented passage **replaces** its original (each training passage appears once, in one form). Clean draws are independent, so \~25% of clean passages are drawn for both; the cut is chosen so that the **final passage, prefix included,** has a training-poison length. A passage drawn for truncation with no matching sentence end is not truncated.
   - **Both detectors train on the same augmented rows** (same draws). The feature scorer needs Contriever embeddings for them.
 - **Headline detector = DistilBERT with augmentation** (fixed now). **Ablation = no augmentation.** Val and test are never augmented.
 - **Class-weighted loss** for DistilBERT (weights inversely proportional to class frequency, \~1:4).
@@ -53,7 +53,7 @@ Each variant passage replaces its original in the same group, at the same positi
 | `prefix_removed` | 1 | Poison without the leading question | Replaces its poison in each n=1 group and in n=5 groups |
 | `clean_prefixed` | 0 | Clean passage with the question prepended | One clean passage at a time, in copies of n=0 groups |
 | `rewritten_clean` | 0 | Clean passage rewritten by Qwen2.5-3B, facts and length kept; 20 spot-checked | One clean passage at a time, in copies of n=0 groups |
-| `clean_truncated` | 0 | Clean passage cut to a length sampled from the `prefix_removed` length distribution of the same dataset (seed 42), at the nearest sentence boundary (word cut if none within ±5 words) | All clean passages in the group: n=0 groups, and n=1 groups with `prefix_removed` poison |
+| `clean_truncated` | 0 | **Sentence-end matching** (amended 17 Oct, replaces the ±5-word rule): cut only at a sentence end whose length is a length the `prefix_removed` poison of the same dataset actually has, choosing among those cut points in proportion to how common that length is (seed 42). A passage with no such sentence end is **unmatched**: it stays unchanged in its group and is not a negative in the pairing (counts reported) | All matched clean passages in the group: n=0 groups, and n=1 groups with `prefix_removed` poison |
 | `injection` | 1 | 12–20 hand-written passages, Greshake's categories | Replaces the rank-5 passage in n=0 groups |
 
 ## 7. Detection metrics
@@ -69,15 +69,16 @@ Each variant passage replaces its original in the same group, at the same positi
   - Unseen attack: `injection` vs clean top-5 of the same questions (wide CI, stated). Negatives come from the original n=0 group of each question.
 - Single-class sets also get the rate at the frozen threshold: FPR for clean sets, TPR for poison sets.
 - **False alarms reported from two sources:** clean passages in n=0 groups, and clean passages inside attacked groups (meaningful at n=1 only). n=1 and n=5 reported separately.
-- **Check:** length-only AUROC on the shortcut-controlled pairing should be ≈ 0.5; if not, report it.
+- **Check:** length-only **and full-stop** AUROC on the shortcut-controlled pairing should be ≈ 0.5; report both with bootstrap CIs. *(Build result, 17 Oct: full stop 0.50 on all three; length 0.40 NQ [95% CI 0.27–0.53, 36 clean passages], 0.49 HotpotQA [0.36–0.61], 0.50 MS MARCO [0.45–0.56].)*
 - **Statistics:** 95% bootstrap CIs, 2,000 resamples, seed 42, resampling questions within each dataset. Tables show mean ± sd across the 3 seeds; bootstrap CIs are for seed 42.
 - **Paired comparison:** for each DistilBERT seed, bootstrap the difference in AUROC (DistilBERT − feature scorer) on the same rows; report all three CIs and whether each excludes 0. Run on the **Original** and **Shortcut-controlled** pairings, for NQ+HotpotQA test and MS MARCO separately.
 
 ## 8. Baselines (same harness, same thresholds rule)
 
-Starts-with-query and TrustRAG Stage-1 give yes/no decisions, so the threshold rule does not apply to them. Report their TPR and FPR at their fixed rule; starts-with-query also gets AUROC (binary score); TrustRAG gets no AUROC.
+Starts-with-query, ends-with-a-full-stop and TrustRAG Stage-1 give yes/no decisions, so the threshold rule does not apply to them. Report their TPR and FPR at their fixed rule; the two binary baselines also get AUROC; TrustRAG gets no AUROC.
 
 - **Starts-with-query:** binary (starts with the question = poisoned).
+- **Ends with a full stop** (added 17 Oct, before any detector run): binary (last word ends in `.`, `!` or `?` = poisoned). Every poison passage ends this way; NQ's clean passages are fixed-length chunks and often stop mid-sentence.
 - **Passage length** and **retrieval score:** direction set once on non-augmented train rows (whichever gives AUROC ≥ 0.5), then frozen. Expected: shorter = poisoned; higher score = poisoned.
 - **Simplified TrustRAG Stage-1** (Zhou et al., App. B.2): K-means (k=2) on L2-normalised Contriever embeddings of each top-5. A cluster qualifies only if it has ≥ 2 passages, mean pairwise cosine ≥ 0.85 and mean pairwise ROUGE-L ≥ 0.25 (both within the cluster). If both qualify, remove the one with higher mean cosine; otherwise remove nothing. The AND rule, the within-cluster computation and the tie rule are our choices; Stage 2 is omitted. Calibration check (no tuning): share of val n=0 groups where it removes anything.
 

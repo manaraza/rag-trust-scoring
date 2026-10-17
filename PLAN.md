@@ -53,14 +53,15 @@ Replaces `PLAN.md` v1. v2.1 added the review fixes (pairings, length-matched tru
 
 Removing the prefix makes length an even stronger giveaway, so `prefix_removed` alone does not neutralise shortcuts.
 
-5. **`clean_truncated`** (test only, label 0). It is paired with `prefix_removed` poison, so it is matched to **the prefix-removed lengths** (~25–30 words), not the 42-word passages with prefix. For each clean test passage, sample a target length from the empirical length distribution of the `prefix_removed` poison of the same dataset (seed 42), then cut at the nearest sentence boundary (word cut if none within ±5 words). That distribution is narrow, so this is close to cutting at its median, but sampling matches it exactly and avoids a "length close to X means clean" signal.
-   *Check:* the length-only baseline on the `prefix_removed` vs `clean_truncated` pairing should give AUROC ≈ 0.5. If it doesn't, the control isn't working and we report that.
+5. **`clean_truncated`** (test only, label 0). It is paired with `prefix_removed` poison, so it is matched to **the prefix-removed lengths** (~25–30 words), not the 42-word passages with prefix. **Amended 17 Oct (before any detector run): sentence-end matching.** Cut only at a sentence end whose length is a length the `prefix_removed` poison of the same dataset actually has, choosing among those cut points in proportion to how common that length is (seed 42). Passages with no such sentence end are *unmatched*: unchanged in their group, not negatives in the pairing. Why: the ±5 rule gave length AUROC 0.39–0.49 and left 42–67% of truncated clean passages ending mid-sentence, while every poison passage ends with a full stop.
+   *Check (build result):* full-stop AUROC 0.50 on all three; length AUROC 0.40 NQ (95% CI 0.27–0.53), 0.49 HotpotQA (0.36–0.61), 0.50 MS MARCO (0.45–0.56). All CIs include 0.5. Matched clean passages: NQ 36/100, HotpotQA 63/100, MS MARCO 355/500 → NQ's shortcut-controlled results have wide CIs; say so.
 6. **Report the length-only baseline in the main results table**, next to starts-with-query.
 7. **MS MARCO caution:** length separates the classes better there, so any MS MARCO generalisation claim is checked against the length-only baseline on the same rows.
 
 **Training augmentation = prefix and length together**
 
-8. In **train rows only** (seed 42): strip the prefix from ~50% of poison; prepend the question to ~50% of clean; truncate ~50% of clean to a target length **sampled from the actual training poison lengths after the prefix step** (a mixture: about half ~42 words with prefix, half ~28 without). Not the #5 distribution, which is prefix-removed only and is for the test-time pairing. Stored as `train_aug`.
+8. In **train rows only** (seed 42): strip the prefix from ~50% of poison; prepend the question to ~50% of clean; truncate ~50% of clean by **sentence-end matching against the actual training poison lengths after the prefix step** (a mixture: about half ~42 words with prefix, half ~28 without), final length prefix included. Not the #5 distribution, which is prefix-removed only and is for the test-time pairing. Stored as `train_aug`.
+   - *Build result:* 896 of the 1,200 clean passages drawn for truncation matched. On DistilBERT's unique training passages, augmentation moves starts-with-query AUROC 1.00 → 0.50, length 0.74 → 0.68, full stop 0.68 → 0.63. The prefix cue is removed; length and full stop are only reduced. State that in the report.
    - **Both detectors train on the same `train_aug` rows.** DistilBERT uses them as unique passages plus ranks 6–20. The feature scorer uses them as group rows of the train questions (augmented passages placed in their groups, which needs Contriever embeddings for them), and **its negatives include the clean passages inside attacked (n=1) groups**, not only n=0 groups.
    - **Headline detector = augmented** (prefix + length), **fixed now**. **Ablation = no augmentation.** Validation is never augmented, so it cannot show which version resists shortcuts (it would likely favour the no-augmentation model); it is used **only to set the threshold**.
    - Consequence, written in the report: for the headline detector, `prefix_removed` and `clean_truncated` are no longer surprise tests. The **no-augmentation ablation** carries the "did it learn the shortcut?" result, and the gap between the two is the finding.
@@ -99,7 +100,7 @@ Write each change as one line in `decisions.md`, then commit `eval_protocol.md`.
 ## 4. Final experiment
 
 **Detectors:** DistilBERT on `[query, passage]` (primary, redundancy-free; headline = augmented, ablation = not augmented) · feature scorer + logistic regression (rival, uses the retrieved set).
-**Baselines (same harness):** starts-with-query · passage length · retrieval score · simplified TrustRAG Stage-1.
+**Baselines (same harness):** starts-with-query · **ends with a full stop** (added 17 Oct; NQ's clean passages stop mid-sentence 57–62% of the time, poison never does) · passage length · retrieval score · simplified TrustRAG Stage-1.
 
 **Rule:** AUROC needs both classes, so it is computed **only on the pairings below**. Single-class sets also get the rate that fits their label at the frozen threshold (5%, plus 1%): **FPR for clean sets, TPR for poison sets**.
 **Clean side of "Original":** clean passages from n=0 groups and from inside attacked groups. FPR is reported for each source separately (§3 #1).
@@ -159,7 +160,7 @@ All figures come from **one script** that reads saved outputs, so nothing is han
 
 | Day | Samana | Aleena | Writing |
 |---|---|---|---|
-| **Sat 17** | Commit `rag_core.py` + notebook fix. **Build `data/passages.jsonl`**: original, prefix_removed, clean_prefixed, **clean_truncated (length-sampled)**, train_aug (**prefix + length**), with `context_id` | Morning: settle §3 together, commit `eval_protocol.md`. ~~Re-judge 4 NQ + test53~~ (done). Then write the 12–20 injection passages; start feature computation | — |
+| **Sat 17** | ~~Commit `rag_core.py` + notebook fix~~ (done). ~~Build `data/passages.jsonl`~~ (done: `02_build_dataset.ipynb`, 29,252 rows, all protocol checks pass; re-run when injection / rewrites arrive) | Morning: settle §3 together, commit `eval_protocol.md`. ~~Re-judge 4 NQ + test53~~ (done). Then write the 12–20 injection passages; start feature computation | — |
 | **Sun 18** | `rewritten_clean` on Colab (~45 min) + spot-check 20. DistilBERT: augmented and not augmented, 3 seeds each (~5 min/run) | Contriever embeddings for the test variants **and the train_aug passages**. Feature scorer (LR), TrustRAG Stage-1 (with its removal rule), length / retrieval-score / starts-with-query baselines | Aleena: finish Related Work at 1 page, regrouped, DOIs |
 | **Mon 19** ✅ | **CHECKPOINT: both detectors trained, thresholds frozen on val.** Score all evaluations with DistilBERT | Shared eval harness: pairings, rates at threshold, CIs, paired difference | Samana: draft **Methodology** (design only, needs no results) |
 | **Tue 20** | End-to-end runs, n=0/1/5, DistilBERT + TrustRAG Stage-1 (own Colab) | End-to-end runs, feature scorer (own Colab). **Failure analysis:** 20 misses + 20 false alarms per detector, categorised | Aleena: Introduction rewrite (paragraphs, RQ, hypothesis, contributions) |
