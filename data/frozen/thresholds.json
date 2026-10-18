@@ -1,0 +1,45 @@
+{
+  "directions": {
+    "length": -1,
+    "retrieval_score": 1
+  },
+  "thresholds": {
+    "featscorer": {
+      "fpr5": {
+        "threshold": 0.12237176886668305,
+        "val_fpr_achieved": 0.05,
+        "val_tpr": 0.9797979797979798
+      },
+      "fpr1": {
+        "threshold": 0.576427829017533,
+        "val_fpr_achieved": 0.01,
+        "val_tpr": 0.8686868686868687
+      }
+    },
+    "length": {
+      "fpr5": {
+        "threshold": -10.0,
+        "val_fpr_achieved": 0.045,
+        "val_tpr": 0.0
+      },
+      "fpr1": {
+        "threshold": -3.0,
+        "val_fpr_achieved": 0.005,
+        "val_tpr": 0.0
+      }
+    },
+    "retrieval": {
+      "fpr5": {
+        "threshold": 1.2666716575622559,
+        "val_fpr_achieved": 0.05,
+        "val_tpr": 0.9696969696969697
+      },
+      "fpr1": {
+        "threshold": 1.4424248933792114,
+        "val_fpr_achieved": 0.01,
+        "val_tpr": 0.7121212121212122
+      }
+    }
+  },
+  "note": "set on val n=0 clean passages (NQ+HotpotQA); frozen for every test set, MS MARCO and every variant"
+}
