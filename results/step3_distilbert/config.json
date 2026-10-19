@@ -1,0 +1,30 @@
+{
+  "config": {
+    "model_name": "distilbert-base-uncased",
+    "max_length": 256,
+    "truncation": "only_second",
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 16,
+    "epochs": 3,
+    "warmup_frac": 0.1,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "configs": {
+      "aug": "train_aug",
+      "noaug": "original"
+    },
+    "headline": "aug",
+    "fprs": {
+      "fpr5": 0.05,
+      "fpr1": 0.01
+    },
+    "score_batch_size": 64
+  },
+  "torch": "2.11.0+cu130",
+  "transformers": "4.57.6",
+  "gpu": "Tesla T4"
+}

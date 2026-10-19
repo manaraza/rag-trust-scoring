@@ -1,0 +1,77 @@
+{
+  "thresholds": {
+    "aug_s42": {
+      "fpr5": {
+        "threshold": 0.006073934491723776,
+        "val_fpr_achieved": 0.05,
+        "n_val_clean": 200
+      },
+      "fpr1": {
+        "threshold": 0.03096751682460308,
+        "val_fpr_achieved": 0.01,
+        "n_val_clean": 200
+      }
+    },
+    "aug_s43": {
+      "fpr5": {
+        "threshold": 0.008898884057998657,
+        "val_fpr_achieved": 0.05,
+        "n_val_clean": 200
+      },
+      "fpr1": {
+        "threshold": 0.06681232899427414,
+        "val_fpr_achieved": 0.01,
+        "n_val_clean": 200
+      }
+    },
+    "aug_s44": {
+      "fpr5": {
+        "threshold": 0.006641112733632326,
+        "val_fpr_achieved": 0.05,
+        "n_val_clean": 200
+      },
+      "fpr1": {
+        "threshold": 0.03890198469161987,
+        "val_fpr_achieved": 0.01,
+        "n_val_clean": 200
+      }
+    },
+    "noaug_s42": {
+      "fpr5": {
+        "threshold": 0.001524786464869976,
+        "val_fpr_achieved": 0.05,
+        "n_val_clean": 200
+      },
+      "fpr1": {
+        "threshold": 0.002501696813851595,
+        "val_fpr_achieved": 0.01,
+        "n_val_clean": 200
+      }
+    },
+    "noaug_s43": {
+      "fpr5": {
+        "threshold": 0.0014021304668858647,
+        "val_fpr_achieved": 0.05,
+        "n_val_clean": 200
+      },
+      "fpr1": {
+        "threshold": 0.00313583598472178,
+        "val_fpr_achieved": 0.01,
+        "n_val_clean": 200
+      }
+    },
+    "noaug_s44": {
+      "fpr5": {
+        "threshold": 0.0011269539827480912,
+        "val_fpr_achieved": 0.05,
+        "n_val_clean": 200
+      },
+      "fpr1": {
+        "threshold": 0.001995538827031851,
+        "val_fpr_achieved": 0.01,
+        "n_val_clean": 200
+      }
+    }
+  },
+  "note": "set on val n=0 clean passages (NQ+HotpotQA); frozen for every test set"
+}

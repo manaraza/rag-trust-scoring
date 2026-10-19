@@ -1,0 +1,92 @@
+{
+  "aug_s42": {
+    "class_weights": [
+      0.625,
+      2.5
+    ],
+    "n_train": 3000,
+    "n_poison": 600,
+    "epoch_loss": [
+      0.3518,
+      0.043,
+      0.0142
+    ],
+    "train_seconds": 77.5,
+    "score_ms_per_passage": 0.885
+  },
+  "aug_s43": {
+    "class_weights": [
+      0.625,
+      2.5
+    ],
+    "n_train": 3000,
+    "n_poison": 600,
+    "epoch_loss": [
+      0.3452,
+      0.0456,
+      0.0202
+    ],
+    "train_seconds": 61.7,
+    "score_ms_per_passage": 0.912
+  },
+  "aug_s44": {
+    "class_weights": [
+      0.625,
+      2.5
+    ],
+    "n_train": 3000,
+    "n_poison": 600,
+    "epoch_loss": [
+      0.3648,
+      0.0453,
+      0.0131
+    ],
+    "train_seconds": 60.1,
+    "score_ms_per_passage": 0.904
+  },
+  "noaug_s42": {
+    "class_weights": [
+      0.625,
+      2.5
+    ],
+    "n_train": 3000,
+    "n_poison": 600,
+    "epoch_loss": [
+      0.2286,
+      0.0097,
+      0.0017
+    ],
+    "train_seconds": 59.9,
+    "score_ms_per_passage": 0.907
+  },
+  "noaug_s43": {
+    "class_weights": [
+      0.625,
+      2.5
+    ],
+    "n_train": 3000,
+    "n_poison": 600,
+    "epoch_loss": [
+      0.2286,
+      0.0045,
+      0.0028
+    ],
+    "train_seconds": 62.3,
+    "score_ms_per_passage": 0.905
+  },
+  "noaug_s44": {
+    "class_weights": [
+      0.625,
+      2.5
+    ],
+    "n_train": 3000,
+    "n_poison": 600,
+    "epoch_loss": [
+      0.2367,
+      0.0022,
+      0.0014
+    ],
+    "train_seconds": 62.1,
+    "score_ms_per_passage": 0.903
+  }
+}
