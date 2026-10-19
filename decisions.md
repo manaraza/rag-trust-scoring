@@ -57,3 +57,5 @@ One line per decision: what we chose and why.
    | 2026-10-20 | AdamW weight decay 0.01 applied to all weights except biases and LayerNorm (standard practice) | Detail not stated in the protocol; fixed before any training run |
    | 2026-10-20 | Shared evaluation code eval_core.py used for every detector and baseline (pairings, thresholds, bootstrap by question within dataset, paired AUROC difference) | All methods scored by identical rules |
 | 2026-10-20 | Dataset rebuilt with data/injection.jsonl (20 passages): 29,352 rows, protocol checks pass, md5 b97676483e9001416c432b392017f20d | Injection groups added before any detector scored them |
+   | 2026-10-20 | rewritten_clean: Qwen2.5-3B-Instruct, fp16, greedy, one fixed prompt (keep every fact, name, number and date; same length); prompt saved in data/rewrite_config.json | Fixed before any rewrite was generated |
+   | 2026-10-20 | Rewrites failing automatic checks (empty, preamble, any number changed, length outside 0.7–1.3x) are excluded and counted, never hand-fixed; 20 passing rewrites (seed 42) spot-checked by hand for changed facts | Objective exclusion rule; spot check measures residual fact changes |
