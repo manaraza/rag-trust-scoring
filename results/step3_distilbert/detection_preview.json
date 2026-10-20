@@ -123,11 +123,14 @@
       },
       "llm_style": {
         "n_pos": 198,
-        "n_neg": 0,
+        "n_neg": 186,
         "n_questions": 40,
         "auroc": {
-          "value": null,
-          "ci95": null
+          "value": 0.99,
+          "ci95": [
+            0.9799,
+            0.9975
+          ]
         },
         "tpr_fpr5": {
           "value": 0.9848,
@@ -137,8 +140,11 @@
           ]
         },
         "fpr_fpr5": {
-          "value": null,
-          "ci95": null
+          "value": 0.2634,
+          "ci95": [
+            0.2139,
+            0.3135
+          ]
         },
         "tpr_fpr1": {
           "value": 0.9798,
@@ -148,8 +154,11 @@
           ]
         },
         "fpr_fpr1": {
-          "value": null,
-          "ci95": null
+          "value": 0.1129,
+          "ci95": [
+            0.071,
+            0.1596
+          ]
         }
       },
       "shortcut_controlled": {
@@ -387,11 +396,14 @@
       },
       "llm_style": {
         "n_pos": 480,
-        "n_neg": 0,
+        "n_neg": 394,
         "n_questions": 100,
         "auroc": {
-          "value": null,
-          "ci95": null
+          "value": 0.9746,
+          "ci95": [
+            0.9619,
+            0.9843
+          ]
         },
         "tpr_fpr5": {
           "value": 1.0,
@@ -401,8 +413,11 @@
           ]
         },
         "fpr_fpr5": {
-          "value": null,
-          "ci95": null
+          "value": 0.4873,
+          "ci95": [
+            0.4282,
+            0.5441
+          ]
         },
         "tpr_fpr1": {
           "value": 0.9833,
@@ -412,8 +427,11 @@
           ]
         },
         "fpr_fpr1": {
-          "value": null,
-          "ci95": null
+          "value": 0.2005,
+          "ci95": [
+            0.1578,
+            0.2449
+          ]
         }
       },
       "shortcut_controlled": {
@@ -568,10 +586,10 @@
       },
       "llm_style": {
         "n_pos": 198,
-        "n_neg": 0,
+        "n_neg": 186,
         "n_questions": 40,
         "auroc": {
-          "value": null,
+          "value": 0.9886,
           "ci95": null
         },
         "tpr_fpr5": {
@@ -579,7 +597,7 @@
           "ci95": null
         },
         "fpr_fpr5": {
-          "value": null,
+          "value": 0.2688,
           "ci95": null
         },
         "tpr_fpr1": {
@@ -587,7 +605,7 @@
           "ci95": null
         },
         "fpr_fpr1": {
-          "value": null,
+          "value": 0.1075,
           "ci95": null
         }
       },
@@ -745,10 +763,10 @@
       },
       "llm_style": {
         "n_pos": 480,
-        "n_neg": 0,
+        "n_neg": 394,
         "n_questions": 100,
         "auroc": {
-          "value": null,
+          "value": 0.972,
           "ci95": null
         },
         "tpr_fpr5": {
@@ -756,7 +774,7 @@
           "ci95": null
         },
         "fpr_fpr5": {
-          "value": null,
+          "value": 0.4492,
           "ci95": null
         },
         "tpr_fpr1": {
@@ -764,7 +782,7 @@
           "ci95": null
         },
         "fpr_fpr1": {
-          "value": null,
+          "value": 0.2335,
           "ci95": null
         }
       },
@@ -899,10 +917,10 @@
       },
       "llm_style": {
         "n_pos": 198,
-        "n_neg": 0,
+        "n_neg": 186,
         "n_questions": 40,
         "auroc": {
-          "value": null,
+          "value": 0.9912,
           "ci95": null
         },
         "tpr_fpr5": {
@@ -910,7 +928,7 @@
           "ci95": null
         },
         "fpr_fpr5": {
-          "value": null,
+          "value": 0.2849,
           "ci95": null
         },
         "tpr_fpr1": {
@@ -918,7 +936,7 @@
           "ci95": null
         },
         "fpr_fpr1": {
-          "value": null,
+          "value": 0.086,
           "ci95": null
         }
       },
@@ -1076,10 +1094,10 @@
       },
       "llm_style": {
         "n_pos": 480,
-        "n_neg": 0,
+        "n_neg": 394,
         "n_questions": 100,
         "auroc": {
-          "value": null,
+          "value": 0.9758,
           "ci95": null
         },
         "tpr_fpr5": {
@@ -1087,7 +1105,7 @@
           "ci95": null
         },
         "fpr_fpr5": {
-          "value": null,
+          "value": 0.4898,
           "ci95": null
         },
         "tpr_fpr1": {
@@ -1095,7 +1113,7 @@
           "ci95": null
         },
         "fpr_fpr1": {
-          "value": null,
+          "value": 0.2284,
           "ci95": null
         }
       },
@@ -1275,11 +1293,14 @@
       },
       "llm_style": {
         "n_pos": 198,
-        "n_neg": 0,
+        "n_neg": 186,
         "n_questions": 40,
         "auroc": {
-          "value": null,
-          "ci95": null
+          "value": 1.0,
+          "ci95": [
+            1.0,
+            1.0
+          ]
         },
         "tpr_fpr5": {
           "value": 1.0,
@@ -1289,8 +1310,11 @@
           ]
         },
         "fpr_fpr5": {
-          "value": null,
-          "ci95": null
+          "value": 0.0484,
+          "ci95": [
+            0.011,
+            0.0973
+          ]
         },
         "tpr_fpr1": {
           "value": 1.0,
@@ -1300,8 +1324,11 @@
           ]
         },
         "fpr_fpr1": {
-          "value": null,
-          "ci95": null
+          "value": 0.0161,
+          "ci95": [
+            0.0,
+            0.0337
+          ]
         }
       },
       "shortcut_controlled": {
@@ -1539,11 +1566,14 @@
       },
       "llm_style": {
         "n_pos": 480,
-        "n_neg": 0,
+        "n_neg": 394,
         "n_questions": 100,
         "auroc": {
-          "value": null,
-          "ci95": null
+          "value": 0.9985,
+          "ci95": [
+            0.9968,
+            0.9997
+          ]
         },
         "tpr_fpr5": {
           "value": 1.0,
@@ -1553,8 +1583,11 @@
           ]
         },
         "fpr_fpr5": {
-          "value": null,
-          "ci95": null
+          "value": 0.2563,
+          "ci95": [
+            0.2065,
+            0.3099
+          ]
         },
         "tpr_fpr1": {
           "value": 1.0,
@@ -1564,8 +1597,11 @@
           ]
         },
         "fpr_fpr1": {
-          "value": null,
-          "ci95": null
+          "value": 0.1244,
+          "ci95": [
+            0.0898,
+            0.1609
+          ]
         }
       },
       "shortcut_controlled": {
@@ -1720,10 +1756,10 @@
       },
       "llm_style": {
         "n_pos": 198,
-        "n_neg": 0,
+        "n_neg": 186,
         "n_questions": 40,
         "auroc": {
-          "value": null,
+          "value": 1.0,
           "ci95": null
         },
         "tpr_fpr5": {
@@ -1731,7 +1767,7 @@
           "ci95": null
         },
         "fpr_fpr5": {
-          "value": null,
+          "value": 0.0645,
           "ci95": null
         },
         "tpr_fpr1": {
@@ -1739,7 +1775,7 @@
           "ci95": null
         },
         "fpr_fpr1": {
-          "value": null,
+          "value": 0.0161,
           "ci95": null
         }
       },
@@ -1897,10 +1933,10 @@
       },
       "llm_style": {
         "n_pos": 480,
-        "n_neg": 0,
+        "n_neg": 394,
         "n_questions": 100,
         "auroc": {
-          "value": null,
+          "value": 0.998,
           "ci95": null
         },
         "tpr_fpr5": {
@@ -1908,7 +1944,7 @@
           "ci95": null
         },
         "fpr_fpr5": {
-          "value": null,
+          "value": 0.3198,
           "ci95": null
         },
         "tpr_fpr1": {
@@ -1916,7 +1952,7 @@
           "ci95": null
         },
         "fpr_fpr1": {
-          "value": null,
+          "value": 0.1523,
           "ci95": null
         }
       },
@@ -2051,10 +2087,10 @@
       },
       "llm_style": {
         "n_pos": 198,
-        "n_neg": 0,
+        "n_neg": 186,
         "n_questions": 40,
         "auroc": {
-          "value": null,
+          "value": 1.0,
           "ci95": null
         },
         "tpr_fpr5": {
@@ -2062,7 +2098,7 @@
           "ci95": null
         },
         "fpr_fpr5": {
-          "value": null,
+          "value": 0.0376,
           "ci95": null
         },
         "tpr_fpr1": {
@@ -2070,7 +2106,7 @@
           "ci95": null
         },
         "fpr_fpr1": {
-          "value": null,
+          "value": 0.0054,
           "ci95": null
         }
       },
@@ -2228,10 +2264,10 @@
       },
       "llm_style": {
         "n_pos": 480,
-        "n_neg": 0,
+        "n_neg": 394,
         "n_questions": 100,
         "auroc": {
-          "value": null,
+          "value": 0.9995,
           "ci95": null
         },
         "tpr_fpr5": {
@@ -2239,7 +2275,7 @@
           "ci95": null
         },
         "fpr_fpr5": {
-          "value": null,
+          "value": 0.099,
           "ci95": null
         },
         "tpr_fpr1": {
@@ -2247,7 +2283,7 @@
           "ci95": null
         },
         "fpr_fpr1": {
-          "value": null,
+          "value": 0.0482,
           "ci95": null
         }
       },

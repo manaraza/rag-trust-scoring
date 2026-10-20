@@ -1,0 +1,21 @@
+{
+  "total": 700,
+  "passing": 580,
+  "excluded": 120,
+  "passing_round1": 456,
+  "passing_round2": 124,
+  "round1_passing_under_check_v1": 390,
+  "excluded_by_check": {
+    "numbers_dropped": 64,
+    "length_ratio": 65,
+    "numbers_added": 19
+  },
+  "passing_by_dataset": {
+    "hotpotqa": 91,
+    "msmarco": 394,
+    "nq": 95
+  },
+  "length_ratio_passing": {
+    "median": 0.857
+  }
+}

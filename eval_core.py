@@ -57,6 +57,8 @@ def pairing(rows, name):
         return [r for r in rows if _is(r, group_variant="original", n_poison=5, label=1)], orig_neg
     if name == "prefix_poison_side":
         return [r for r in rows if _is(r, group_variant="prefix_removed", n_poison=1, variant="prefix_removed")], orig_neg
+    if name == "prefix_poison_side_n5":   # all five poison prefix-removed (n=5 reported separately, protocol section 7)
+        return [r for r in rows if _is(r, group_variant="prefix_removed", n_poison=5, variant="prefix_removed")], orig_neg
     if name == "prefix_clean_side":
         return orig_pos, [r for r in rows if _is(r, group_variant="clean_prefixed", variant="clean_prefixed")]
     if name == "llm_style":
@@ -73,7 +75,7 @@ def pairing(rows, name):
     raise ValueError(name)
 
 
-PAIRINGS = ["original", "original_n5", "prefix_poison_side", "prefix_clean_side", "llm_style",
+PAIRINGS = ["original", "original_n5", "prefix_poison_side", "prefix_poison_side_n5", "prefix_clean_side", "llm_style",
             "shortcut_controlled", "unseen_attack", "collateral_n1"]
 
 

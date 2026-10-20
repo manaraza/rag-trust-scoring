@@ -1,0 +1,17 @@
+{
+  "generator": "Qwen/Qwen2.5-3B-Instruct",
+  "dtype": "float16",
+  "decoding": "greedy",
+  "batch_size": 8,
+  "max_new_tokens_factor": 1.6,
+  "max_new_tokens_cap": 512,
+  "length_ratio_range": [
+    0.7,
+    1.3
+  ],
+  "spot_check_n": 20,
+  "seed": 42,
+  "prompt": "Rewrite the following passage in your own fluent, natural prose. Keep every fact, name, number and date exactly as it is. Do not add, remove or explain anything. Keep it about the same length (about {n_words} words). Reply with the rewritten passage only.\n\nPassage:\n{text}",
+  "prompt_round2": "Paraphrase the passage below sentence by sentence. For each sentence of the original, write one sentence that says the same thing in different words. Keep every name, number and date exactly as written, using digits wherever the original uses digits. Do not merge, drop or add sentences, do not add information, and do not finish or correct the passage. Your answer must be about {n_words} words long (between {lo} and {hi} words). Reply with the paraphrase only.\n\nPassage:\n{text}",
+  "check_version": 2
+}

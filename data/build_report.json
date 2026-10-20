@@ -72,7 +72,7 @@
     "passages_changed": 1879
   },
   "counts": {
-    "rows_total": 29352,
+    "rows_total": 32252,
     "rows_by_group_variant_n": {
       "original|n=0": 1500,
       "original|n=1": 7375,
@@ -80,6 +80,7 @@
       "prefix_removed|n=1": 3390,
       "prefix_removed|n=5": 700,
       "clean_prefixed|n=0": 3500,
+      "rewritten_clean|n=0": 2900,
       "shortcut_controlled|n=0": 700,
       "shortcut_controlled|n=1": 3390,
       "injection|n=0": 100,
@@ -89,10 +90,11 @@
       "train_aug|n=None": 1801
     },
     "rows_by_variant_label": {
-      "original|label=0": 17788,
+      "original|label=0": 20108,
       "original|label=1": 3201,
       "prefix_removed|label=1": 1999,
       "clean_prefixed|label=0": 700,
+      "rewritten_clean|label=0": 580,
       "clean_truncated|label=0": 2217,
       "injection|label=1": 20,
       "train_aug|label=0": 3127,
@@ -238,6 +240,6 @@
   "inputs": {
     "poisonedrag_commit": "f660d72174f06b13fae5163ce656e7b235db858f",
     "injection_passages": 20,
-    "rewritten_passages": 0
+    "rewritten_passages": 580
   }
 }
