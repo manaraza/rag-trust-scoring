@@ -59,7 +59,34 @@ Numbers marked **(preview)** come from the 03 preview (seed 42 CIs, before the r
 - **TrustRAG does nothing at n=1** (keeps every poisoned passage; ASR unchanged at 0.70), which is the single-passage gap that motivates per-passage scoring. **Even at n=5, the setting it was designed for, it only removes about half the poison (keeps 45.5%), and ASR stays at 0.875**, because the remaining poisoned passages are enough to mislead the generator.
 - Suggested sentence: "A clustering defence cannot see a single poisoned passage, and at five it removes only part of the cluster; per-passage scores close the n=1 gap, but the feature scorer, which relies on group statistics, breaks down when every retrieved passage is poisoned."
 - The run notebook's "clean passages removed" column is a **mean count per question**; Table 2 in notebook 06 also gives it as a rate (removed / clean passages in the group), adds ASR given poison retrieved, and latency per passage.
-- MS MARCO (Aleena's shard): to add.
+- **All four defences, MS MARCO (held out; 100 test questions; ASR substring, 95% CI):**
+
+| Defence | n=0 | n=1 | n=5 | Clean removed per question, n=0 / n=1 (mean count) | F1 retention (n=0) |
+|---|---|---|---|---|---|
+| None | 0.13 | 0.77 [0.68, 0.85] | 0.93 | 0 / 0 | 1 |
+| DistilBERT (aug, s42) | 0.14 | 0.14 [0.08, 0.21] | 0.13 | 1.11 / 0.89 | 0.901 |
+| Feature scorer | 0.14 | 0.22 [0.14, 0.31] | 0.91 [0.85, 0.96] | 1.04 / 0.50 | 0.851 |
+| TrustRAG Stage-1 (simplified) | 0.13 | 0.79 [0.71, 0.87] | 0.87 [0.80, 0.93] | 0.25 / 0.32 | 0.981 |
+
+- **The n=0 rate is a floor, not an attack.** With no poison at all, the attacker's answer already appears in 0.13 of MS MARCO answers by substring (0.08 whole word), mostly short answers such as "no" matching inside other words. **DistilBERT brings n=1 and n=5 attack success down to that floor** (0.14 and 0.13; it keeps 0% of poison).
+- **The price on MS MARCO is clean passages:** DistilBERT removes on average 1.1 of 5 clean passages per question at n=0 (about 22%, matching its 22% MS MARCO false-alarm rate), and clean-answer F1 drops to 0.90 of undefended. The feature scorer removes about as many (1.0 per question) and loses more F1 (0.85), while still keeping 21% of poison at n=1. This is the threshold-transfer problem from Table 1 showing up inside RAG.
+- **TrustRAG again has no effect at n=1** (0.79; keeps all poison) and little at n=5 (0.87), at a small clean cost (0.98 retention).
+- **The feature scorer fails at n=5 on MS MARCO too** (0.91; keeps 64% of poison), outside its training distribution.
+- Suggested sentence: "On the held-out MS MARCO corpus the augmented detector still removes every poisoned passage, bringing attack success down to the rate seen without any attack, but the validation threshold flags about a fifth of clean passages, which costs 10% of clean-answer F1."
+
+---
+
+## 1c. Latency per passage (Table 2 / Discussion; Tesla T4, group of 5, median of 200 test groups)
+
+| Detector | Marginal (retriever embeddings already computed) | Standalone (incl. Contriever embedding) |
+|---|---|---|
+| DistilBERT (aug s42) | 1.86 ms | 1.86 ms (needs no embeddings) |
+| Feature scorer | 0.11 ms | 9.9 ms |
+| TrustRAG Stage-1 | 1.03 ms | 11.0 ms |
+
+- All three are cheap next to generation (Qwen2.5-3B takes a few hundred ms per answer on the same GPU; exact median from Step 1 records is printed by notebook 06).
+- Suggested sentence: "Every detector adds at most about 2 ms per passage once the retriever's embeddings are available; DistilBERT needs no embeddings at all, so its 1.9 ms is also its standalone cost, while the feature scorer and TrustRAG cost about 10-11 ms per passage if the embeddings must be computed."
+- Timing only: the scaler's feature-name warning in notebook 03c does not affect any score.
 
 ---
 
