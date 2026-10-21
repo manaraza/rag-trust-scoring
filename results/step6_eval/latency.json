@@ -1,0 +1,10 @@
+{
+  "DistilBERT, ms per passage (T4, batched; median of models)": 0.91,
+  "DistilBERT (aug s42), ms per passage, group of 5 (Tesla T4)": 1.861,
+  "Feature scorer, ms per passage, marginal given retriever embeddings (Tesla T4)": 0.1139,
+  "Feature scorer, ms per passage, standalone incl. Contriever (Tesla T4)": 9.926,
+  "TrustRAG Stage-1, ms per passage, marginal given retriever embeddings (Tesla T4)": 1.033,
+  "TrustRAG Stage-1, ms per passage, standalone incl. Contriever (Tesla T4)": 10.977,
+  "latency_method": "median over 200 test n=1 groups of 5 (seed 42), 10 warm-up groups excluded",
+  "Generator Qwen2.5-3B, s per answer (T4, median, for scale)": 0.49
+}
