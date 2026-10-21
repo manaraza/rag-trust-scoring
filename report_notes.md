@@ -23,11 +23,43 @@ Numbers marked **(preview)** come from the 03 preview (seed 42 CIs, before the r
 - AUROC 0.32, TPR 0.00 at 5% FPR (NQ+HotpotQA). Below 0.5 means injected passages are rated cleaner than real clean passages.
 - Suggested sentence: "DistilBERT learns what PoisonedRAG passages look like rather than what makes a passage adversarial."
 
+**LLM-style clean passages: augmentation moved the model onto a style shortcut** (preview, after the rewrites were added)
+- Augmented DistilBERT flags 0.27 (NQ+HotpotQA) and 0.48 (MS MARCO) of rewritten clean passages at the 5% threshold, against 0.065 and 0.22 for the same passages in their original wording; AUROC stays high (0.990, 0.975).
+- Without augmentation the effect is much smaller: FPR 0.05 (NQ+HotpotQA), 0.22 (MS MARCO).
+- Suggested sentence: "Removing the prefix cue did not make the detector cue-free: deprived of the prefix, the augmented model leans more on LLM writing style, so clean passages rewritten by an LLM are flagged about four times as often as their originals."
+- Caveat for the same paragraph: 8 of 20 spot-checked rewrites also changed a fact (section 3), so the llm_style negatives differ in content as well as style, most often on MS MARCO.
+- 4 of the 580 passing "rewrites" are identical to their original (3 MS MARCO, 1 NQ: a 3-word passage, an address listing, an airport-code list and a forum snippet the model left unchanged); they were kept, which can only lower the llm_style FPR slightly (at most 1 of 186 and 3 of 394 negatives).
+
 **Collateral false alarms (clean passages inside attacked n=1 groups)** (preview)
 - 0.067 (NQ+HotpotQA) and 0.22 (MS MARCO) at the 5% threshold. Expect DistilBERT to remove more clean passages on MS MARCO in the end-to-end runs.
 
 **Training**
 - Six models (augmented and not augmented, seeds 42/43/44); training loss fell to about 0.01-0.02 (augmented) and 0.001-0.003 (not augmented) by epoch 3.
+
+---
+
+## 1b. End-to-end results (Results section; NQ+HotpotQA shard, 40 test questions, 5% FPR threshold)
+
+- Undefended numbers reproduce Step 1 exactly: ASR 0.05 / 0.70 / 0.975 at n = 0 / 1 / 5. Reuse check: 10/10 regenerated answers identical to Step 1, so answers for groups where a defence removed nothing are reused.
+- **DistilBERT (augmented, seed 42) cuts attack success at n=1 from 0.70 [0.55, 0.83] to 0.025 [0.00, 0.08]** and at n=5 from 0.975 to 0.05.
+- At n=5 it removes all five passages in 0.875 of questions, so the generator answers with no context; "says correct" is 0.375 there (the model falls back on its own knowledge).
+- Cost on clean questions (n=0): on average 0.325 of 5 clean passages removed per question (about 6.5% of passages, in line with the 6.5% test FPR), and clean-answer F1 is unchanged (retention 1.005).
+- Suggested sentence: "On NQ and HotpotQA, filtering with the augmented detector reduces single-poison attack success from 70% to 2.5% without lowering clean-answer quality."
+- **All four defences, NQ+HotpotQA (ASR substring, 95% CI):**
+
+| Defence | n=0 | n=1 | n=5 | Clean removed per question, n=0 / n=1 (mean count) | F1 retention (n=0) |
+|---|---|---|---|---|---|
+| None | 0.05 | 0.70 [0.55, 0.83] | 0.975 | 0 / 0 | 1 |
+| DistilBERT (aug, s42) | 0.05 | 0.025 [0.00, 0.08] | 0.05 | 0.33 / 0.28 | 1.005 |
+| Feature scorer | 0.075 | 0.025 [0.00, 0.08] | 0.525 [0.40, 0.65] | 0.25 / 0.05 | 0.973 |
+| TrustRAG Stage-1 (simplified) | 0.05 | 0.70 [0.55, 0.83] | 0.875 [0.78, 0.95] | 0 / 0.05 | 1.000 |
+
+- **Both per-passage detectors stop the single-poison attack** (0.70 to 0.025). The feature scorer removes fewer clean passages inside attacked groups (0.05 vs 0.28 per question) but loses a little clean-answer F1 (0.973).
+- **The feature scorer fails at n=5** (ASR 0.525; it keeps 38% of poison). This is outside its training distribution (it was trained on n=0 and n=1 groups only, protocol §5): with five poisoned passages its group features (z-score, distance from the other passages) no longer single out poison. Report it with that caveat.
+- **TrustRAG does nothing at n=1** (keeps every poisoned passage; ASR unchanged at 0.70), which is the single-passage gap that motivates per-passage scoring. **Even at n=5, the setting it was designed for, it only removes about half the poison (keeps 45.5%), and ASR stays at 0.875**, because the remaining poisoned passages are enough to mislead the generator.
+- Suggested sentence: "A clustering defence cannot see a single poisoned passage, and at five it removes only part of the cluster; per-passage scores close the n=1 gap, but the feature scorer, which relies on group statistics, breaks down when every retrieved passage is poisoned."
+- The run notebook's "clean passages removed" column is a **mean count per question**; Table 2 in notebook 06 also gives it as a rate (removed / clean passages in the group), adds ASR given poison retrieved, and latency per passage.
+- MS MARCO (Aleena's shard): to add.
 
 ---
 
