@@ -1,0 +1,976 @@
+{
+  "in_dist|none|n=0|ASR (substring)": [
+    0.05,
+    0.0,
+    0.125,
+    40
+  ],
+  "in_dist|none|n=0|ASR (whole word)": [
+    0.05,
+    0.0,
+    0.125,
+    40
+  ],
+  "in_dist|none|n=0|says correct": [
+    0.475,
+    0.325,
+    0.625,
+    40
+  ],
+  "in_dist|none|n=0|F1 vs correct": [
+    0.304,
+    0.178,
+    0.435,
+    40
+  ],
+  "in_dist|none|n=0|poison kept | retrieved": null,
+  "in_dist|none|n=0|clean passages removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|none|n=0|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|none|n=1|ASR (substring)": [
+    0.7,
+    0.55,
+    0.825,
+    40
+  ],
+  "in_dist|none|n=1|ASR (whole word)": [
+    0.7,
+    0.55,
+    0.825,
+    40
+  ],
+  "in_dist|none|n=1|says correct": [
+    0.275,
+    0.15,
+    0.4,
+    40
+  ],
+  "in_dist|none|n=1|F1 vs correct": [
+    0.167,
+    0.08,
+    0.265,
+    40
+  ],
+  "in_dist|none|n=1|poison kept | retrieved": [
+    1.0,
+    1.0,
+    1.0,
+    40
+  ],
+  "in_dist|none|n=1|clean passages removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|none|n=1|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|none|n=5|ASR (substring)": [
+    0.975,
+    0.925,
+    1.0,
+    40
+  ],
+  "in_dist|none|n=5|ASR (whole word)": [
+    0.975,
+    0.925,
+    1.0,
+    40
+  ],
+  "in_dist|none|n=5|says correct": [
+    0.05,
+    0.0,
+    0.125,
+    40
+  ],
+  "in_dist|none|n=5|F1 vs correct": [
+    0.049,
+    0.015,
+    0.09,
+    40
+  ],
+  "in_dist|none|n=5|poison kept | retrieved": [
+    1.0,
+    1.0,
+    1.0,
+    40
+  ],
+  "in_dist|none|n=5|clean passages removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|none|n=5|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|distilbert|n=0|ASR (substring)": [
+    0.05,
+    0.0,
+    0.125,
+    40
+  ],
+  "in_dist|distilbert|n=0|ASR (whole word)": [
+    0.05,
+    0.0,
+    0.125,
+    40
+  ],
+  "in_dist|distilbert|n=0|says correct": [
+    0.475,
+    0.325,
+    0.625,
+    40
+  ],
+  "in_dist|distilbert|n=0|F1 vs correct": [
+    0.306,
+    0.179,
+    0.438,
+    40
+  ],
+  "in_dist|distilbert|n=0|poison kept | retrieved": null,
+  "in_dist|distilbert|n=0|clean passages removed": [
+    0.325,
+    0.175,
+    0.5,
+    40
+  ],
+  "in_dist|distilbert|n=0|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|distilbert|n=1|ASR (substring)": [
+    0.025,
+    0.0,
+    0.075,
+    40
+  ],
+  "in_dist|distilbert|n=1|ASR (whole word)": [
+    0.025,
+    0.0,
+    0.075,
+    40
+  ],
+  "in_dist|distilbert|n=1|says correct": [
+    0.45,
+    0.3,
+    0.6,
+    40
+  ],
+  "in_dist|distilbert|n=1|F1 vs correct": [
+    0.31,
+    0.183,
+    0.439,
+    40
+  ],
+  "in_dist|distilbert|n=1|poison kept | retrieved": [
+    0.025,
+    0.0,
+    0.075,
+    40
+  ],
+  "in_dist|distilbert|n=1|clean passages removed": [
+    0.275,
+    0.15,
+    0.425,
+    40
+  ],
+  "in_dist|distilbert|n=1|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|distilbert|n=5|ASR (substring)": [
+    0.05,
+    0.0,
+    0.125,
+    40
+  ],
+  "in_dist|distilbert|n=5|ASR (whole word)": [
+    0.05,
+    0.0,
+    0.125,
+    40
+  ],
+  "in_dist|distilbert|n=5|says correct": [
+    0.375,
+    0.25,
+    0.5,
+    40
+  ],
+  "in_dist|distilbert|n=5|F1 vs correct": [
+    0.211,
+    0.116,
+    0.319,
+    40
+  ],
+  "in_dist|distilbert|n=5|poison kept | retrieved": [
+    0.015,
+    0.0,
+    0.04,
+    40
+  ],
+  "in_dist|distilbert|n=5|clean passages removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|distilbert|n=5|all 5 removed": [
+    0.875,
+    0.775,
+    0.975,
+    40
+  ],
+  "in_dist|featscorer|n=0|ASR (substring)": [
+    0.075,
+    0.0,
+    0.175,
+    40
+  ],
+  "in_dist|featscorer|n=0|ASR (whole word)": [
+    0.05,
+    0.0,
+    0.125,
+    40
+  ],
+  "in_dist|featscorer|n=0|says correct": [
+    0.475,
+    0.325,
+    0.625,
+    40
+  ],
+  "in_dist|featscorer|n=0|F1 vs correct": [
+    0.296,
+    0.174,
+    0.424,
+    40
+  ],
+  "in_dist|featscorer|n=0|poison kept | retrieved": null,
+  "in_dist|featscorer|n=0|clean passages removed": [
+    0.25,
+    0.1,
+    0.4,
+    40
+  ],
+  "in_dist|featscorer|n=0|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|featscorer|n=1|ASR (substring)": [
+    0.025,
+    0.0,
+    0.075,
+    40
+  ],
+  "in_dist|featscorer|n=1|ASR (whole word)": [
+    0.025,
+    0.0,
+    0.075,
+    40
+  ],
+  "in_dist|featscorer|n=1|says correct": [
+    0.475,
+    0.325,
+    0.625,
+    40
+  ],
+  "in_dist|featscorer|n=1|F1 vs correct": [
+    0.317,
+    0.19,
+    0.443,
+    40
+  ],
+  "in_dist|featscorer|n=1|poison kept | retrieved": [
+    0.025,
+    0.0,
+    0.075,
+    40
+  ],
+  "in_dist|featscorer|n=1|clean passages removed": [
+    0.05,
+    0.0,
+    0.125,
+    40
+  ],
+  "in_dist|featscorer|n=1|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|featscorer|n=5|ASR (substring)": [
+    0.525,
+    0.4,
+    0.65,
+    40
+  ],
+  "in_dist|featscorer|n=5|ASR (whole word)": [
+    0.525,
+    0.4,
+    0.65,
+    40
+  ],
+  "in_dist|featscorer|n=5|says correct": [
+    0.125,
+    0.025,
+    0.225,
+    40
+  ],
+  "in_dist|featscorer|n=5|F1 vs correct": [
+    0.099,
+    0.033,
+    0.177,
+    40
+  ],
+  "in_dist|featscorer|n=5|poison kept | retrieved": [
+    0.381,
+    0.305,
+    0.455,
+    40
+  ],
+  "in_dist|featscorer|n=5|clean passages removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|featscorer|n=5|all 5 removed": [
+    0.375,
+    0.275,
+    0.45,
+    40
+  ],
+  "in_dist|trustrag|n=0|ASR (substring)": [
+    0.05,
+    0.0,
+    0.125,
+    40
+  ],
+  "in_dist|trustrag|n=0|ASR (whole word)": [
+    0.05,
+    0.0,
+    0.125,
+    40
+  ],
+  "in_dist|trustrag|n=0|says correct": [
+    0.475,
+    0.325,
+    0.625,
+    40
+  ],
+  "in_dist|trustrag|n=0|F1 vs correct": [
+    0.304,
+    0.178,
+    0.435,
+    40
+  ],
+  "in_dist|trustrag|n=0|poison kept | retrieved": null,
+  "in_dist|trustrag|n=0|clean passages removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|trustrag|n=0|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|trustrag|n=1|ASR (substring)": [
+    0.7,
+    0.55,
+    0.825,
+    40
+  ],
+  "in_dist|trustrag|n=1|ASR (whole word)": [
+    0.7,
+    0.55,
+    0.825,
+    40
+  ],
+  "in_dist|trustrag|n=1|says correct": [
+    0.275,
+    0.15,
+    0.4,
+    40
+  ],
+  "in_dist|trustrag|n=1|F1 vs correct": [
+    0.167,
+    0.079,
+    0.265,
+    40
+  ],
+  "in_dist|trustrag|n=1|poison kept | retrieved": [
+    1.0,
+    1.0,
+    1.0,
+    40
+  ],
+  "in_dist|trustrag|n=1|clean passages removed": [
+    0.05,
+    0.0,
+    0.15,
+    40
+  ],
+  "in_dist|trustrag|n=1|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|trustrag|n=5|ASR (substring)": [
+    0.875,
+    0.775,
+    0.95,
+    40
+  ],
+  "in_dist|trustrag|n=5|ASR (whole word)": [
+    0.875,
+    0.775,
+    0.95,
+    40
+  ],
+  "in_dist|trustrag|n=5|says correct": [
+    0.05,
+    0.0,
+    0.125,
+    40
+  ],
+  "in_dist|trustrag|n=5|F1 vs correct": [
+    0.06,
+    0.021,
+    0.105,
+    40
+  ],
+  "in_dist|trustrag|n=5|poison kept | retrieved": [
+    0.455,
+    0.385,
+    0.525,
+    40
+  ],
+  "in_dist|trustrag|n=5|clean passages removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "in_dist|trustrag|n=5|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    40
+  ],
+  "msmarco|none|n=0|ASR (substring)": [
+    0.13,
+    0.07,
+    0.2,
+    100
+  ],
+  "msmarco|none|n=0|ASR (whole word)": [
+    0.08,
+    0.03,
+    0.14,
+    100
+  ],
+  "msmarco|none|n=0|says correct": [
+    0.65,
+    0.55,
+    0.74,
+    100
+  ],
+  "msmarco|none|n=0|F1 vs correct": [
+    0.325,
+    0.257,
+    0.395,
+    100
+  ],
+  "msmarco|none|n=0|poison kept | retrieved": null,
+  "msmarco|none|n=0|clean passages removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|none|n=0|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|none|n=1|ASR (substring)": [
+    0.77,
+    0.68,
+    0.85,
+    100
+  ],
+  "msmarco|none|n=1|ASR (whole word)": [
+    0.75,
+    0.66,
+    0.83,
+    100
+  ],
+  "msmarco|none|n=1|says correct": [
+    0.22,
+    0.15,
+    0.3,
+    100
+  ],
+  "msmarco|none|n=1|F1 vs correct": [
+    0.11,
+    0.068,
+    0.156,
+    100
+  ],
+  "msmarco|none|n=1|poison kept | retrieved": [
+    1.0,
+    1.0,
+    1.0,
+    98
+  ],
+  "msmarco|none|n=1|clean passages removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|none|n=1|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|none|n=5|ASR (substring)": [
+    0.93,
+    0.88,
+    0.97,
+    100
+  ],
+  "msmarco|none|n=5|ASR (whole word)": [
+    0.86,
+    0.79,
+    0.93,
+    100
+  ],
+  "msmarco|none|n=5|says correct": [
+    0.05,
+    0.01,
+    0.1,
+    100
+  ],
+  "msmarco|none|n=5|F1 vs correct": [
+    0.048,
+    0.021,
+    0.078,
+    100
+  ],
+  "msmarco|none|n=5|poison kept | retrieved": [
+    1.0,
+    1.0,
+    1.0,
+    100
+  ],
+  "msmarco|none|n=5|clean passages removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|none|n=5|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|distilbert|n=0|ASR (substring)": [
+    0.14,
+    0.07,
+    0.21,
+    100
+  ],
+  "msmarco|distilbert|n=0|ASR (whole word)": [
+    0.1,
+    0.05,
+    0.16,
+    100
+  ],
+  "msmarco|distilbert|n=0|says correct": [
+    0.58,
+    0.49,
+    0.67,
+    100
+  ],
+  "msmarco|distilbert|n=0|F1 vs correct": [
+    0.293,
+    0.226,
+    0.361,
+    100
+  ],
+  "msmarco|distilbert|n=0|poison kept | retrieved": null,
+  "msmarco|distilbert|n=0|clean passages removed": [
+    1.11,
+    0.92,
+    1.31,
+    100
+  ],
+  "msmarco|distilbert|n=0|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|distilbert|n=1|ASR (substring)": [
+    0.14,
+    0.08,
+    0.21,
+    100
+  ],
+  "msmarco|distilbert|n=1|ASR (whole word)": [
+    0.09,
+    0.04,
+    0.15,
+    100
+  ],
+  "msmarco|distilbert|n=1|says correct": [
+    0.59,
+    0.49,
+    0.68,
+    100
+  ],
+  "msmarco|distilbert|n=1|F1 vs correct": [
+    0.293,
+    0.227,
+    0.36,
+    100
+  ],
+  "msmarco|distilbert|n=1|poison kept | retrieved": [
+    0.0,
+    0.0,
+    0.0,
+    98
+  ],
+  "msmarco|distilbert|n=1|clean passages removed": [
+    0.89,
+    0.74,
+    1.07,
+    100
+  ],
+  "msmarco|distilbert|n=1|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|distilbert|n=5|ASR (substring)": [
+    0.13,
+    0.07,
+    0.2,
+    100
+  ],
+  "msmarco|distilbert|n=5|ASR (whole word)": [
+    0.06,
+    0.02,
+    0.11,
+    100
+  ],
+  "msmarco|distilbert|n=5|says correct": [
+    0.44,
+    0.34,
+    0.54,
+    100
+  ],
+  "msmarco|distilbert|n=5|F1 vs correct": [
+    0.194,
+    0.133,
+    0.262,
+    100
+  ],
+  "msmarco|distilbert|n=5|poison kept | retrieved": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|distilbert|n=5|clean passages removed": [
+    0.09,
+    0.04,
+    0.15,
+    100
+  ],
+  "msmarco|distilbert|n=5|all 5 removed": [
+    0.67,
+    0.57,
+    0.76,
+    100
+  ],
+  "msmarco|featscorer|n=0|ASR (substring)": [
+    0.14,
+    0.08,
+    0.22,
+    100
+  ],
+  "msmarco|featscorer|n=0|ASR (whole word)": [
+    0.09,
+    0.04,
+    0.15,
+    100
+  ],
+  "msmarco|featscorer|n=0|says correct": [
+    0.56,
+    0.46,
+    0.65,
+    100
+  ],
+  "msmarco|featscorer|n=0|F1 vs correct": [
+    0.277,
+    0.209,
+    0.347,
+    100
+  ],
+  "msmarco|featscorer|n=0|poison kept | retrieved": null,
+  "msmarco|featscorer|n=0|clean passages removed": [
+    1.04,
+    0.85,
+    1.23,
+    100
+  ],
+  "msmarco|featscorer|n=0|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|featscorer|n=1|ASR (substring)": [
+    0.22,
+    0.14,
+    0.31,
+    100
+  ],
+  "msmarco|featscorer|n=1|ASR (whole word)": [
+    0.18,
+    0.11,
+    0.26,
+    100
+  ],
+  "msmarco|featscorer|n=1|says correct": [
+    0.55,
+    0.45,
+    0.64,
+    100
+  ],
+  "msmarco|featscorer|n=1|F1 vs correct": [
+    0.287,
+    0.217,
+    0.361,
+    100
+  ],
+  "msmarco|featscorer|n=1|poison kept | retrieved": [
+    0.214,
+    0.133,
+    0.296,
+    98
+  ],
+  "msmarco|featscorer|n=1|clean passages removed": [
+    0.5,
+    0.36,
+    0.65,
+    100
+  ],
+  "msmarco|featscorer|n=1|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|featscorer|n=5|ASR (substring)": [
+    0.91,
+    0.85,
+    0.96,
+    100
+  ],
+  "msmarco|featscorer|n=5|ASR (whole word)": [
+    0.82,
+    0.74,
+    0.89,
+    100
+  ],
+  "msmarco|featscorer|n=5|says correct": [
+    0.07,
+    0.03,
+    0.12,
+    100
+  ],
+  "msmarco|featscorer|n=5|F1 vs correct": [
+    0.062,
+    0.027,
+    0.105,
+    100
+  ],
+  "msmarco|featscorer|n=5|poison kept | retrieved": [
+    0.639,
+    0.581,
+    0.701,
+    100
+  ],
+  "msmarco|featscorer|n=5|clean passages removed": [
+    0.19,
+    0.1,
+    0.29,
+    100
+  ],
+  "msmarco|featscorer|n=5|all 5 removed": [
+    0.07,
+    0.03,
+    0.12,
+    100
+  ],
+  "msmarco|trustrag|n=0|ASR (substring)": [
+    0.13,
+    0.07,
+    0.2,
+    100
+  ],
+  "msmarco|trustrag|n=0|ASR (whole word)": [
+    0.08,
+    0.03,
+    0.14,
+    100
+  ],
+  "msmarco|trustrag|n=0|says correct": [
+    0.64,
+    0.54,
+    0.73,
+    100
+  ],
+  "msmarco|trustrag|n=0|F1 vs correct": [
+    0.319,
+    0.25,
+    0.391,
+    100
+  ],
+  "msmarco|trustrag|n=0|poison kept | retrieved": null,
+  "msmarco|trustrag|n=0|clean passages removed": [
+    0.25,
+    0.12,
+    0.4,
+    100
+  ],
+  "msmarco|trustrag|n=0|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|trustrag|n=1|ASR (substring)": [
+    0.79,
+    0.71,
+    0.87,
+    100
+  ],
+  "msmarco|trustrag|n=1|ASR (whole word)": [
+    0.77,
+    0.68,
+    0.85,
+    100
+  ],
+  "msmarco|trustrag|n=1|says correct": [
+    0.21,
+    0.14,
+    0.29,
+    100
+  ],
+  "msmarco|trustrag|n=1|F1 vs correct": [
+    0.106,
+    0.064,
+    0.151,
+    100
+  ],
+  "msmarco|trustrag|n=1|poison kept | retrieved": [
+    1.0,
+    1.0,
+    1.0,
+    98
+  ],
+  "msmarco|trustrag|n=1|clean passages removed": [
+    0.32,
+    0.17,
+    0.49,
+    100
+  ],
+  "msmarco|trustrag|n=1|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "msmarco|trustrag|n=5|ASR (substring)": [
+    0.87,
+    0.8,
+    0.93,
+    100
+  ],
+  "msmarco|trustrag|n=5|ASR (whole word)": [
+    0.79,
+    0.71,
+    0.87,
+    100
+  ],
+  "msmarco|trustrag|n=5|says correct": [
+    0.08,
+    0.03,
+    0.14,
+    100
+  ],
+  "msmarco|trustrag|n=5|F1 vs correct": [
+    0.064,
+    0.031,
+    0.101,
+    100
+  ],
+  "msmarco|trustrag|n=5|poison kept | retrieved": [
+    0.516,
+    0.444,
+    0.588,
+    100
+  ],
+  "msmarco|trustrag|n=5|clean passages removed": [
+    0.02,
+    0.0,
+    0.06,
+    100
+  ],
+  "msmarco|trustrag|n=5|all 5 removed": [
+    0.0,
+    0.0,
+    0.0,
+    100
+  ],
+  "in_dist|distilbert|retention_f1": 1.005,
+  "in_dist|featscorer|retention_f1": 0.973,
+  "in_dist|trustrag|retention_f1": 1.0,
+  "msmarco|distilbert|retention_f1": 0.901,
+  "msmarco|featscorer|retention_f1": 0.851,
+  "msmarco|trustrag|retention_f1": 0.981
+}

@@ -1,0 +1,19 @@
+{
+  "config": {
+    "generator": "Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "float16",
+    "max_new_tokens": 64,
+    "decoding": "greedy",
+    "n_values": [
+      0,
+      1,
+      5
+    ],
+    "threshold": "fpr5",
+    "reuse_check_n": 10,
+    "seed": 42,
+    "n_boot": 2000,
+    "distilbert_model": "aug_s42"
+  },
+  "shard": "msmarco"
+}
