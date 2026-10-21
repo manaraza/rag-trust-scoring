@@ -38,6 +38,38 @@ Numbers marked **(preview)** come from the 03 preview (seed 42 CIs, before the r
 
 ---
 
+## 1a. FINAL detection results (notebook 06, 21 Oct): these replace the preview numbers in section 1
+
+**Paired AUROC difference, DistilBERT (augmented) minus feature scorer (pre-registered; same rows, bootstrap by question, 3 seeds):**
+
+| | Original | Shortcut-controlled |
+|---|---|---|
+| NQ + HotpotQA | +0.004 to +0.005, CI includes 0 (all 3 seeds) | **+0.067 to +0.073**, CI excludes 0 (all 3 seeds) |
+| MS MARCO (held out) | **+0.099 to +0.101**, CI excludes 0 | **+0.463 to +0.467**, CI excludes 0 |
+
+- Suggested sentence: "On unmodified in-distribution passages the three-feature scorer is as good as DistilBERT (difference +0.005, CI includes zero), but DistilBERT is significantly better once the prefix and length cues are removed (+0.07) and on the held-out corpus (+0.10, and +0.47 with the cues removed), for all three seeds."
+
+**Augmentation effect (additional, not pre-registered; augmented minus not augmented, same seed):**
+- Original: -0.002 to -0.006 (augmentation costs almost nothing; significant in 4 of 6 cases because the CIs are very tight).
+- Shortcut-controlled: **+0.24 to +0.31 (NQ+HotpotQA), +0.56 to +0.59 (MS MARCO)**, CI excludes 0 for every seed.
+
+**Why the feature scorer and the retrieval score fail under shortcut control:** both rely mostly on the retrieval score, and the question prefix is what makes poison score high. With the prefix removed:
+- Feature scorer AUROC: 0.993 to 0.769 (NQ+HotpotQA) and 0.893 to 0.351 (MS MARCO).
+- Retrieval score AUROC: 0.994 to 0.907 (NQ+HotpotQA shortcut-controlled) and 0.847 to 0.505 (MS MARCO).
+- Augmented DistilBERT stays at 0.992-0.998.
+
+**Feature scorer at n=5 (outside training distribution):** AUROC 0.900 (NQ+HotpotQA) and 0.603 (MS MARCO), against 0.993 and 0.893 at n=1.
+
+**Unseen injection attack (NQ+HotpotQA):** DistilBERT augmented 0.33, not augmented 0.32, feature scorer 0.44 [0.30, 0.59]. No detector generalises to it.
+
+**Baselines (Table 1):** starts-with-query is perfect on the original pairing (AUROC 1.0) and at chance (0.5) once the prefix is removed, which is the prefix shortcut in one line; ends-with-full-stop 0.68 / 0.55 original, 0.50 shortcut-controlled; length 0.80 / 0.88 original but catches nothing at its threshold; TrustRAG flags 0% of poison passages at n=1.
+
+**Sensitivity check (protocol §10):** excluding the 5 hand-check-flagged test questions changes n=1 ASR by at most 0.016 for any defence (e.g. none 0.700 to 0.684 NQ+HotpotQA, 0.770 to 0.763 MS MARCO); no conclusion changes.
+
+**Failure sheets:** augmented DistilBERT has 5 misses and 291 false alarms across the original and shortcut-controlled test pairings (sheet: all 5 misses + 20 false alarms); the feature scorer has 567 misses (mostly prefix-removed poison) and 158 false alarms (sheet: 20 + 20).
+
+---
+
 ## 1b. End-to-end results (Results section; NQ+HotpotQA shard, 40 test questions, 5% FPR threshold)
 
 - Undefended numbers reproduce Step 1 exactly: ASR 0.05 / 0.70 / 0.975 at n = 0 / 1 / 5. Reuse check: 10/10 regenerated answers identical to Step 1, so answers for groups where a defence removed nothing are reused.
