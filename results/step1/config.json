@@ -1,0 +1,36 @@
+{
+  "config": {
+    "dataset": "nq",
+    "poisonedrag_repo": "https://github.com/sleeepeer/PoisonedRAG.git",
+    "poisonedrag_commit": "f660d72174f06b13fae5163ce656e7b235db858f",
+    "beir_corpus_url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/nq.zip",
+    "retriever": "facebook/contriever",
+    "score_function": "dot",
+    "retriever_max_length": 512,
+    "top_k": 5,
+    "n_poison_values": [
+      0,
+      1,
+      3,
+      5
+    ],
+    "generator": "Qwen/Qwen2.5-3B-Instruct",
+    "generator_dtype": "float16",
+    "max_new_tokens": 64,
+    "decoding": "greedy",
+    "seed": 42,
+    "n_boot": 2000,
+    "split_fractions": [
+      0.6,
+      0.2,
+      0.2
+    ]
+  },
+  "env": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu130",
+    "transformers": "4.57.6",
+    "gpu": "Tesla T4",
+    "started": "2026-10-14 03:09:20"
+  }
+}
