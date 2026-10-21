@@ -38,7 +38,9 @@ Numbers marked **(preview)** come from the 03 preview (seed 42 CIs, before the r
 
 ---
 
-## 1a. FINAL detection results (notebook 06, 21 Oct): these replace the preview numbers in section 1
+## 1a. FINAL detection results (notebook 06, re-run 22 Oct with identical numbers): these replace the preview numbers in section 1
+
+**Table 1 caption must say:** DistilBERT cells are mean ± sd over seeds 42/43/44 with the 95% bootstrap CI of seed 42 in brackets (so a mean of 0.999 can sit next to a seed-42 CI of [1.000, 1.000]); all other cells are a single model with its 95% CI; yes/no rules have one operating point, so their TPR (FPR) is at the rule, not at a 5% threshold.
 
 **Paired AUROC difference, DistilBERT (augmented) minus feature scorer (pre-registered; same rows, bootstrap by question, 3 seeds):**
 
@@ -116,7 +118,7 @@ Numbers marked **(preview)** come from the 03 preview (seed 42 CIs, before the r
 | Feature scorer | 0.11 ms | 9.9 ms |
 | TrustRAG Stage-1 | 1.03 ms | 11.0 ms |
 
-- All three are cheap next to generation (Qwen2.5-3B takes a few hundred ms per answer on the same GPU; exact median from Step 1 records is printed by notebook 06).
+- All three are cheap next to generation: Qwen2.5-3B takes a median 0.49 s per answer on the same GPU (Step 1 records), so even the standalone detectors add about 55 ms per question (5 passages), roughly 10% of generation time; with the retriever's embeddings reused it is under 10 ms.
 - Suggested sentence: "Every detector adds at most about 2 ms per passage once the retriever's embeddings are available; DistilBERT needs no embeddings at all, so its 1.9 ms is also its standalone cost, while the feature scorer and TrustRAG cost about 10-11 ms per passage if the embeddings must be computed."
 - Timing only: the scaler's feature-name warning in notebook 03c does not affect any score.
 
